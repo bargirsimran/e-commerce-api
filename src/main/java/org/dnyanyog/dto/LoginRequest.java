@@ -7,11 +7,12 @@ import org.dnyanyog.common.*;
 
 import org.dnyanyog.common.*;
 
-public class Login {
+public class LoginRequest {
 	
 	public String user;
 	public String password;
-	public Login(String user, String password) {
+	
+	public LoginRequest(String user, String password) {
         this.user = user;
         this.password = password;
     }

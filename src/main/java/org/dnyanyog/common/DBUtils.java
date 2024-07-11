@@ -19,7 +19,7 @@ public class DBUtils {
 		return result;
 	}
 	
-	public static boolean executeQuery(String query) throws SQLException {
-		return statement.execute(query);
+	public static int executeUpdateQuery(String query) throws SQLException {
+		return statement.executeUpdate(query);
 	}
 }
