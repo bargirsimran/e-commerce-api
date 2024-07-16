@@ -14,12 +14,13 @@ public class DBUtils {
 			e.printStackTrace();
 		}
 	}
-	public static ResultSet executeSelectQuery(String query) throws SQLException {
+	public static ResultSet SelectQuery(String query) throws SQLException {
 		ResultSet result=statement.executeQuery(query);
 		return result;
 	}
 	
-	public static int executeUpdateQuery(String query) throws SQLException {
-		return statement.executeUpdate(query);
+	public static int executeQuery(String query) throws SQLException {
+		int rowsaffected=statement.executeUpdate(query);
+		return rowsaffected;
 	}
 }

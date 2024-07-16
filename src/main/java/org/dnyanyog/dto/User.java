@@ -1,7 +1,9 @@
 package org.dnyanyog.dto;
 
+import org.springframework.stereotype.Component;
 
-public class AddUserRequest {
+@Component
+public class User {
 	
 	public int user_id;
 	public String name;
@@ -9,7 +11,5 @@ public class AddUserRequest {
 	public String address;
 	public String username;
 	public String password;
-	
-	
 	
 }
