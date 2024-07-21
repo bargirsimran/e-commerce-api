@@ -1,32 +1,44 @@
 package org.dnyanyog.service;
 
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 
-import org.dnyanyog.common.DBUtils;
+import org.dnyanyog.dao.UsersDao;
 import org.dnyanyog.dto.LoginRequest;
 import org.dnyanyog.dto.LoginResponse;
+import org.dnyanyog.entity.Users;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class LoginService {
+	
+	@Autowired
+	UsersDao userDao;
 	
 	public LoginResponse login(LoginRequest loginBody) throws SQLException {
 		
 		LoginResponse response=new LoginResponse();
-		
-		String query="SELECT username, password FROM user WHERE username='"+loginBody.user+"'AND password= '"+loginBody.password+"'";
-		
-		ResultSet result=DBUtils.SelectQuery(query);
-		
-		if(result.next()) {
+		Users user= userDao.findByLoginName(loginBody.user);
+	
+	if(user.getLoginName().equals(loginBody.user)
+			&& user.getPassword().equals(loginBody.password) ){
 			response.errorCode="0000";
 			response.message="Login Success";
+			response.firstName=user.getFirstName();
+			response.lastName=user.getLastName();
+			response.loginName=user.getLoginName();
 			
 			return response;
-		}
+			
+	}
+	else {
 		response.errorCode="911";
 		response.message="Login Failed!!";
-		
 		return response;
+		}
+	
 			
 	}
 	

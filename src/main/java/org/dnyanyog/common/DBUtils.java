@@ -7,7 +7,7 @@ public class DBUtils {
 	
 	static {
 		try {
-			connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce_db","root","simran@123");
+			connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce_api","root","simran@123");
 			
 			statement=connection.createStatement();
 		}catch(SQLException e) {

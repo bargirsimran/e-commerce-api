@@ -4,4 +4,7 @@ public class LoginResponse {
 	
 	public String errorCode;
 	public String message;
+	public String firstName;
+	public String lastName;
+	public String loginName;
 }
