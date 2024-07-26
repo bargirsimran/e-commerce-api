@@ -37,7 +37,6 @@ public UpdateUserREsponse updateUser(UpdateUserRequest request) {
             return response;
 		}
 	
-		
 		Users usersTable=new Users();
 		
 		

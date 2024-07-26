@@ -1,14 +1,9 @@
 package org.dnyanyog.service;
 
 import java.sql.SQLException;
-import java.util.Optional;
-
-import org.dnyanyog.common.DBUtils;
 import org.dnyanyog.dao.UsersDao;
 import org.dnyanyog.dto.AddUserRequest;
 import org.dnyanyog.dto.AddUserResponse;
-import org.dnyanyog.dto.UpdateUserREsponse;
-import org.dnyanyog.dto.UpdateUserRequest;
 import org.dnyanyog.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
