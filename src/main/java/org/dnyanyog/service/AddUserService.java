@@ -1,30 +1,47 @@
 package org.dnyanyog.service;
 
 import java.sql.SQLException;
+import java.util.Optional;
 
 import org.dnyanyog.common.DBUtils;
+import org.dnyanyog.dao.UsersDao;
 import org.dnyanyog.dto.AddUserRequest;
 import org.dnyanyog.dto.AddUserResponse;
+import org.dnyanyog.dto.UpdateUserREsponse;
+import org.dnyanyog.dto.UpdateUserRequest;
+import org.dnyanyog.entity.Users;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AddUserService {
 	
-	public AddUserResponse addUser(AddUserRequest addUserBody) throws SQLException {
+	@Autowired
+	UsersDao usersDao;
+	
+	public AddUserResponse addUser(AddUserRequest request) throws SQLException {
+		
+		Users usersTable = new Users();
+		
+		usersTable.setFirstName(request.getFirstName());
+		usersTable.setLastName(request.getLastName());
+		usersTable.setAddress(request.getAddress());
+		usersTable.setEmail(request.getEmail());
+		usersTable.setLoginName(request.getLoginName());
+		usersTable.setPassword(request.getPassword());
+		
+		Users dataInsertedByDao=usersDao.save(usersTable); //Insert & Update
 		
 		AddUserResponse response=new AddUserResponse();
-		String query = "INSERT INTO user(user_id,name,email,address,username,password) VALUES "
-				+ "('"+addUserBody.user_id+"','"+addUserBody.name+"','"+addUserBody.email+"','"+addUserBody.address+"','"+addUserBody.username+"','"+addUserBody.password+"') ";
 		
-		int rowsInserted= DBUtils.executeQuery(query);
 		
-		if(rowsInserted>0) {
-			response.errorCode="0000";
-			response.message="User Added Sucessfully!!";
-		
+			response.setErrorCode("0000");
+			response.setMessage("User Added Sucessfully!!");
+			response.setRequest(request);
+			
+			response.setUser_id(dataInsertedByDao.getUser_id());
+			
 			return response;
-		}
-		response.errorCode="911";
-		response.message="User Added Failed!!";
-		
-		return response;
 	}
+	
 }

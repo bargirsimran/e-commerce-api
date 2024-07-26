@@ -1,7 +1,6 @@
 package org.dnyanyog.dto;
 
-
-public class AddUserRequest {
+public class UpdateUserRequest {
 	
 	private String firstName;
 	private String lastName;
@@ -9,6 +8,7 @@ public class AddUserRequest {
 	private String email;
 	private String loginName;
 	private String password;
+	private Integer user_id;
 	
 	public String getFirstName() {
 		return firstName;
@@ -46,9 +46,12 @@ public class AddUserRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
+	public Integer getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
+	}
 	
 	
 }
