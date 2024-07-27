@@ -18,4 +18,8 @@ public class UserManagementService {
 		
 		return user.findAll();
 	}
+	
+	public Users getUserById(Integer userId){
+		return user.findById(userId).get();
+	}
 }
